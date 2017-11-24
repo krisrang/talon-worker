@@ -7,12 +7,12 @@ git_source(:github) do |repo_name|
 end
 
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'hiredis'
 gem 'redis', require:  ["redis", "redis/connection/hiredis"]
 gem 'bootsnap', require: false
 
 gem 'sidekiq'
-gem 'message_bus'
 gem 'sentry-raven'
 gem 'skylight'
 
