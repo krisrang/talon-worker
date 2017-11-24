@@ -1,5 +1,7 @@
-# This file is used by Rack-based servers to start the application.
+require 'rubygems'
+require 'bundler'
 
-require_relative 'config/environment'
+Bundler.require
 
-run Rails.application
+require './api'
+run TalonWorkerAPI
