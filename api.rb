@@ -13,4 +13,8 @@ class TalonWorkerAPI < Sinatra::Application
     content_type :json
     { version: version }.to_json
   end
+
+  get '/fail' do
+    fail
+  end
 end
