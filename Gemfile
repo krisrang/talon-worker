@@ -19,10 +19,14 @@ gem 'skylight'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'bundle-audit'
+  gem 'rake'
 end
 
 group :test do
+  gem 'rack-test'
+  gem 'rspec'
   gem 'rspec_junit_formatter'
+  gem 'mocha'
 end
 
 group :development do
