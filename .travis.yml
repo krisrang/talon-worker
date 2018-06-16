@@ -1,7 +1,9 @@
 language: ruby
-cache: bundler
+cache:
+  directories:
+    - vendor/bundle
 rvm:
-  - 2.5
+  - 2.5.1
 services:
   - redis-server
 env:
