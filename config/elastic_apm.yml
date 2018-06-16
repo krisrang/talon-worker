@@ -1,0 +1,6 @@
+---
+service_name: 'Talon-worker'
+server_url: 'https://apm.krn.ee:443'
+transaction_sample_rate: 0.5
+enabled_environments:
+  - production

@@ -3,6 +3,7 @@ ENV['RACK_ENV'] = ENV['RAILS_ENV'] = ENV['ENV'] = 'test'
 require 'rspec'
 require 'rack/test'
 require 'talon_worker/api'
+require 'talon_worker/sidekiq'
 
 module TestHelpers
   include Rack::Test::Methods

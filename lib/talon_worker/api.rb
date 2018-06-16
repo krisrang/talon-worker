@@ -3,13 +3,8 @@ require 'sinatra/reloader'
 require 'raven'
 require 'shell_helpers'
 
-class TalonWorkerAPI < Sinatra::Application
+class TalonWorkerAPI < Sinatra::Application  
   include ShellHelpers
-
-  # configure :production do
-  #   require 'skylight/sinatra'
-  #   Skylight.start!
-  # end
 
   configure :development do
     register Sinatra::Reloader
@@ -38,6 +33,19 @@ class TalonWorkerAPI < Sinatra::Application
     content_type :json
     
     url = request["url"]
-    run("youtube-dl -j #{url}").strip
+    response = run("youtube-dl -j #{url}").strip
+
+    if response.split("\n").last.start_with?('ERROR:')
+      error = response.split("\n").last.sub('ERROR: ', '')
+      return [400, { error: error }.to_json]
+    end
+
+    begin
+      JSON.parse(response)
+    rescue JSON::ParserError
+      return [400, { error: 'Unknown error' }.to_json]
+    end
+
+    response
   end
 end
